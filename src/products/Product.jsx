@@ -1,29 +1,48 @@
-import { NavLink, useNavigate } from "react-router";
+import { deleteProduct, patchProduct } from "../services/product.service";
 
+import { Badge } from "react-bootstrap";
 import { DeleteModal } from "../ui/DeleteModal";
-import { deleteProduct } from "../services/product.service";
+import { NavLink } from "react-router";
 import { useState } from "react";
 
 export const Product = ({
   data,
+  setProducts,
   showButtonDetails = false,
   showButtonEdit = false,
   showButtonDelete = false,
 }) => {
-  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
 
   const handleDelete = () => {
     deleteProduct(data.id)
       .then(() => {
-        navigate("/");
+        setProducts((prevProducts) =>
+          prevProducts.filter((product) => product.id !== data.id),
+        );
       })
       .catch(console.error);
   };
 
+  const handleChangeAvailability = async () => {
+    try {
+      const updatedProduct = await patchProduct(data.id, {
+        available: !data.available,
+      });
+
+      setProducts((prevProducts) =>
+        prevProducts.map((product) =>
+          product.id === data.id ? updatedProduct : product,
+        ),
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
-      <div key={data.id} className="col-4 border-2 mb-5">
+      <div className="col-4 border-2 mb-5">
         <img src={data.image} alt="" className="card-img-top" />
 
         <div className="card-body">
@@ -31,25 +50,29 @@ export const Product = ({
           <p className="card-text">{data.description}</p>
           <p className="fw-bold text-primary">{data.price}€</p>
 
-          <span class="chip chip-successgit ">
+          <Badge
+            bg={data.available ? "success" : "warning"}
+            text={data.available ? "white" : "black"}
+            className="mb-2"
+            onClick={handleChangeAvailability}
+            style={{ cursor: "pointer" }}
+          >
             {data.available ? "Disponible" : "En rupture"}
-          </span>
+          </Badge>
 
           <div className="d-flex gap-2">
             {showButtonDetails && (
               <NavLink
                 to={`/products/details/${data.id}`}
-                end
                 className="btn btn-primary"
               >
-                Voir details
+                Voir détails
               </NavLink>
             )}
 
             {showButtonEdit && (
               <NavLink
                 to={`/products/modifier/${data.id}`}
-                end
                 className="btn btn-success"
               >
                 Modifier
