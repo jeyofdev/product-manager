@@ -26,11 +26,19 @@
     },
     {
       "name": "tablette",
-      "description": "fvyhfvyhv ",
+      "description": "Découvrez une tablette polyvalente et performante",
       "price": 100,
       "available": true,
       "image": "https://placehold.co/400x250",
       "id": "YnO0ZYUE6jA"
+    },
+    {
+      "name": "ftghfv",
+      "description": "fgvyhfv",
+      "price": "2",
+      "available": true,
+      "image": "fgyvghv",
+      "id": "sTsjeH8jrdM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
