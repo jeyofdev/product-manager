@@ -2,7 +2,7 @@ import { NavLink, useParams } from "react-router";
 import { useEffect, useState } from "react";
 
 import Layout from "../Layout";
-import Product from "./Product";
+import { Product } from "./Product";
 import { getAllProductById } from "../services/product.service";
 
 export const ProductDetails = () => {

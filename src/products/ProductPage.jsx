@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Layout from "../Layout";
-import Product from "./Product";
+import { Product } from "./Product";
 import { getAllProducts } from "../services/product.service";
 
 export const ProductPage = () => {
