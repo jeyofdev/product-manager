@@ -1,0 +1,37 @@
+{
+  "products": [
+    {
+      "name": "Ordinateur HP",
+      "description": "Ordinateur portable performant.",
+      "price": 750,
+      "available": true,
+      "image": "https://placehold.co/400x250",
+      "id": "1"
+    },
+    {
+      "name": "iPhone 15",
+      "description": "Smartphone Apple.",
+      "price": 899,
+      "available": false,
+      "image": "https://placehold.co/400x250",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "name": "Clavier Logitech",
+      "description": "Clavier sans fil.",
+      "price": 59,
+      "available": false,
+      "image": "https://placehold.co/400x250"
+    },
+    {
+      "name": "tablette",
+      "description": "fvyhfvyhv ",
+      "price": 100,
+      "available": true,
+      "image": "https://placehold.co/400x250",
+      "id": "YnO0ZYUE6jA"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
