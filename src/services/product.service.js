@@ -68,3 +68,24 @@ export const deleteProduct = async (productId) => {
 
   return true;
 };
+
+export const patchProduct = async (productId, product) => {
+  try {
+    const response = await fetch(`${API_URL}/products/${productId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+
+    if (!response.ok) {
+      throw new Error("Erreur lors de la modification du produit");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
